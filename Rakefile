@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "enum_attribute"
   gem.homepage = "http://github.com/eijik/enum_attribute"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Add helper selection method for model class}
+  gem.description = %Q{I'm going to describe detail later...}
   gem.email = "monkeytohuman@gmail.com"
   gem.authors = ["Eiji Kosaki"]
   # dependencies defined in Gemfile
