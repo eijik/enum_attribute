@@ -92,7 +92,7 @@ module EnumAttribute
           return "" unless value
           #I18n.t("models.#{self.model_name.to_s.underscore}.#{pluralized}.#{value}")
           i18n_scope = "activerecord"
-          i18n_scope = self.i18n_scopei.to_s if defined?(self.i18n_scope) #rails2 support i18n_scope
+          i18n_scope = self.i18n_scope.to_s if defined?(self.i18n_scope) #rails2 support i18n_scope
           I18n.t("#{i18n_scope}.attributes.#{self.model_name.to_s.underscore}.#{pluralized}.#{value}")
         end
       }
