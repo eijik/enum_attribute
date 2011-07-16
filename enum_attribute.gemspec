@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{enum_attribute}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Eiji Kosaki}]
@@ -14,15 +14,16 @@ Gem::Specification.new do |s|
   s.email = %q{monkeytohuman@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
     ".rspec",
+    ".rvmrc",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "enum_attribute.gemspec",
