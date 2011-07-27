@@ -81,11 +81,13 @@ module EnumAttribute
           end
         end
         define_method "#{name}_name" do |col|
-          return "" unless col
-          if col.to_i==0
-            [self.i18nt(col,pluralized)]
+          return "" if col.blank?
+          if col.to_i==0 #0 and char -> true
+            return "" unless values.any?{|v| v == col.to_s}
+            self.i18nt(col,pluralized)
           else
-            [self.i18nt(values[col - 1],pluralized)]
+            return "" if values.size < col.to_i
+            self.i18nt(values[col - 1],pluralized)
           end
         end
         def i18nt(value,pluralized) 
@@ -102,21 +104,16 @@ module EnumAttribute
         column_name = name
         column_name = opts[:column_name] if opts[:column_name]
         if opts[:number]
-          if __send__(column_name) #reject nil in column
-            values[__send__(column_name) - 1]
-          else
-            ""
-          end
+          return "" if __send__(column_name).to_i - 1 < 0
+          values[__send__(column_name).to_i - 1]
         else
           column_name
         end
       end
 
-
       # if locale is just variable,it'll cause to error
       # So array(*locale) can make parameter nothing.
       # ex. foo.val_name
-      #
       define_method "#{name}_name" do |*locale|
         column_name = name
         column_name = opts[:column_name] if opts[:column_name]
@@ -139,7 +136,6 @@ module EnumAttribute
         i18n_scope = "activerecord"
         i18n_scope = self.i18n_scope.to_s if defined?(self.i18n_scope) #rails2 support i18n_scope
         I18n.t("#{i18n_scope}.attributes.#{self.model_name.to_s.underscore}.#{pluralized}.#{value}",:locale=>l)
-
       end
 
       # I want to use for checkbox type ,but indeed its hard to manage to store&read with Mysql
