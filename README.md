@@ -1,10 +1,8 @@
 enum_attribute
---------------
 
-* If you settin up enum_attribute to existed your method,
-* add helpful method automatically.
-* It's for good to input type(select,checkbox,radio)
-* indication with I18n
+* If you settin up enum_attribute to existed your method,helpful method are added automatically.
+* It's useful for input type(select,checkbox,radio) in a form.
+* indication is through I18n.
 
 
 
@@ -21,14 +19,16 @@ or write Gemfile and "bundle install"
 
 Usage
 -----
-#add in your model
+###add in your model
 include EnumAttribute
 
-#extend your method to model class
+###extend your method to model class
 enum_attribute :test, ['a','b','c'] 
 
   ex.
-      #class methods is defined.
+
+      # class methods will be  defined.
+
       Aaa.tests         => ['a','b','c']
       Aaa.test_names    => [ t('activerecord.attributes.aaa.tests.a'),
                              t('activerecord.attributes.aaa.tests.b'),
@@ -40,16 +40,16 @@ enum_attribute :test, ['a','b','c']
                             [t('activerecord.attributes.aaa.tests.b'),b],
                             [t('activerecord.attributes.aaa.tests.c'),c]] 
 
-      test_pairs method is useful for select_tag
+      # test_pairs method is useful for select_tag
        select @aaa, Aaa.test_pairs 
 
-      #instance methods also is defined.
+      # instance methods also will be defined.
       @aaa = Aaa.new(:test=>'a')
       @aaa.test_name     => t('activerecord.attributes.aaa.tests.a')
 
 
-#@params [Hash] options
-#@options options [boolean] :number(false)
+####@params [Hash] options
+####@options options [boolean] :number(false)
    if true, (name)_pairs method return number in 2nd array 
    and change column name :column => (name)_id automatically!
    It will be useful for select type
@@ -60,12 +60,12 @@ enum_attribute :test, ['a','b','c']
        object.test_pairs => [[a,1],[b,2],[c,3]]
 
 
-#@options options [string] :column_name(false) attached column name in table of DB
+####@options options [string] :column_name(false) attached column name in table of DB
 
    ex. :column => 
    it will be set when name and column name is difference
 
-#@options options [boolean] :i18n(true)
+####@options options [boolean] :i18n(true)
    if i18n == false ,just return raw data
 
 
